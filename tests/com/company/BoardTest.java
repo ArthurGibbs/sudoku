@@ -4,6 +4,7 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNull;
+import static sun.misc.Version.println;
 
 public class BoardTest {
 
@@ -44,5 +45,27 @@ public class BoardTest {
     String result = board.getBoardString();
     assertThat(result, is(expected));
   }
+
+  @Test
+  public void canFromString(){
+      String expected = " 1 2 3 | 4 5 6 | 7 8 9 \n"
+                      + "       |       |       \n"
+                      + "   4   |       |       \n"
+                      + "-------|-------|-------\n"
+                      + "     7 |       |       \n"
+                      + "       |       |       \n"
+                      + "       |       |       \n"
+                      + "-------|-------|-------\n"
+                      + "       |       |       \n"
+                      + "       |       |       \n"
+                      + "       |       |       \n";
+      board = new Board();
+      board.fromString(expected);
+      String output = board.getBoardString();
+      System.out.println(expected);
+      System.out.println(output);
+      assertThat(output, is(expected));
+  }
+
 
 }

@@ -7,12 +7,17 @@ public class Board {
   private RowCol[] cols_ = new RowCol[9];
 
   public Board() {
+      resetBoard();
+  }
+
+  private void resetBoard() {
     for( int x=0; x<3; x++ )
       for( int y=0; y<3; y++ )
         boxes[x][y] = new Box(x,y);
 
     for( int i=0; i<9; i++ ){
       rows_[i] = new RowCol();
+      cols_[i] = new RowCol();
     }
 
     for( int x=0; x<9; x++ )
@@ -95,5 +100,24 @@ public class Board {
 
   public void removePossibilityFromBox(int boxX, int boxY, int value) {
    boxes[boxX][boxY].removeOptionFromBox(value);
+  }
+
+  public void fromString(String expected) {
+    String gridNumbers = expected.replaceAll("\\-\\-\\-\\-\\-\\-\\-\\|\\-\\-\\-\\-\\-\\-\\-\\|\\-\\-\\-\\-\\-\\-\\-\n","");
+    gridNumbers = gridNumbers.replaceAll("\\| ","");
+
+    String[] lines = gridNumbers.split("\n");
+    resetBoard();
+    int y = 0;
+    for (String i: lines){
+      String line = i.replaceAll("^ ","").replaceAll(" $","");
+      for (int x = 0; x<9; x++){
+        String value = String.valueOf(line.charAt(x * 2));
+        if ( !value.equals(" ")) {
+          cells[x][y].setValue(Integer.parseInt(value));
+        }
+      }
+      y++;
+    }
   }
 }
