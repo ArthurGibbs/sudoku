@@ -12,7 +12,7 @@ public class BoardTest {
   @Test
   public void newBoardInitializesCells() {
     board = new Board();
-    assertNull(board.getCell(1, 2).getValue());
+    assertNull(board.getCells()[1][2].getValue());
   }
 
   @Test

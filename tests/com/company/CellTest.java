@@ -14,16 +14,16 @@ public class CellTest {
     @Test
     public void newCellHas9Options() {
     cell = new Cell();
-      List<Integer> result = cell.getOptions();
+      List<Integer> result = cell.getPossibilities();
       assertThat(result, is(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9)));
     }
 
     @Test
     public void optionsCanBeRemoved() {
       cell = new Cell();
-      cell.removeOption(3);
-      cell.removeOption(7);
-      List<Integer> result = cell.getOptions();
+      cell.removePossibilities(3);
+      cell.removePossibilities(7);
+      List<Integer> result = cell.getPossibilities();
       assertThat(result, is(Arrays.asList(1, 2, 4, 5, 6, 8, 9)));
     }
 
@@ -31,7 +31,7 @@ public class CellTest {
     public void valueCanBeSet() {
       cell = new Cell();
       cell.setValue(4);
-      List<Integer> result = cell.getOptions();
+      List<Integer> result = cell.getPossibilities();
       assertThat(result, is(Arrays.asList(4)));
       assertThat(cell.getValue(), is(4));
     }

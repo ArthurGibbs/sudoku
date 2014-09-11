@@ -3,22 +3,42 @@ package com.company;
 public class Board {
   private Cell[][] cells = new Cell[9][9];
   private Box[][] boxes = new Box[3][3];
+  private RowCol[] rows_ = new RowCol[9];
+  private RowCol[] cols_ = new RowCol[9];
 
   public Board() {
     for( int x=0; x<3; x++ )
       for( int y=0; y<3; y++ )
         boxes[x][y] = new Box(x,y);
 
+    for( int i=0; i<9; i++ ){
+      rows_[i] = new RowCol();
+    }
+
     for( int x=0; x<9; x++ )
       for( int y=0; y<9; y++ ) {
         Cell cell = new Cell(x, y, this);
         cells[x][y] = cell;
         boxes[x/3][y/3].setCell(x % 3, y % 3, cell);
+        rows_[y].setCell(x, cell);
+        cols_[x].setCell(y, cell);
       }
   }
 
-  public Cell getCell(int x, int y) {
-    return cells[x][y];
+  public Cell[][] getCells(){
+    return cells;
+  }
+
+  public Box[][] getBoxes() {
+    return boxes;
+  }
+
+  public RowCol[] getRows() {
+    return rows_;
+  }
+
+  public RowCol[] getCols() {
+    return cols_;
   }
 
   public void set(int x, int y, int value) {
@@ -61,19 +81,19 @@ public class Board {
     return cellValue;
   }
 
-  public void removeOptionFromRow(int y, int value) {
+  public void removePossibilityFromRow(int y, int value) {
     for ( int x=0; x<9; x++ ) {
-      cells[x][y].removeOption(value);
+      cells[x][y].removePossibilities(value);
     }
   }
 
-  public void removeOptionFromCol(int x, int value) {
+  public void removePossibilityFromCol(int x, int value) {
     for ( int y=0; y<9; y++ ) {
-      cells[x][y].removeOption(value);
+      cells[x][y].removePossibilities(value);
     }
   }
 
-  public void removeOptionFromBox(int boxX, int boxY, int value) {
+  public void removePossibilityFromBox(int boxX, int boxY, int value) {
    boxes[boxX][boxY].removeOptionFromBox(value);
   }
 }

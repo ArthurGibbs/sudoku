@@ -17,6 +17,6 @@ public class Box {
   public void removeOptionFromBox(int value) {
     for( int x=0; x<3; x++ )
       for( int y=0; y<3; y++ )
-        cells[x][y].removeOption(value);
+        cells[x][y].removePossibilities(value);
   }
 }
