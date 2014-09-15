@@ -36,7 +36,7 @@ public class Cell {
     return possibilities_;
   }
 
-  public void removePossibilities(int i) {
-    possibilities_.remove((Integer) i);
+  public boolean removePossibilities(int i) {
+    return possibilities_.remove((Integer) i);
   }
 }

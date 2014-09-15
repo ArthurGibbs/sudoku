@@ -120,4 +120,14 @@ public class Board {
       y++;
     }
   }
+
+  public boolean equals(Board other) {
+    for( int x=0; x<9; x++ )
+      for( int y=0; y<9; y++ ) {
+        if (this.cells[x][y].getValue() != other.getCells()[x][y].getValue()) {
+          return false;
+        }
+      }
+    return true;
+  }
 }

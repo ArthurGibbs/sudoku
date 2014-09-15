@@ -11,4 +11,18 @@ public class RowCol {
   public void setCell(int x, Cell cell) {
     cells[x] = cell;
   }
+
+  public void removeOption(int value) {
+    options_.remove((Integer) value);
+    for( int x=0; x<9; x++ )
+        cells[x].removePossibilities(value);
+  }
+
+  public List<Integer> getOptions() {
+    return options_;
+  }
+
+  public List<Cell> getCells() {
+    return Arrays.asList(cells);
+  }
 }
