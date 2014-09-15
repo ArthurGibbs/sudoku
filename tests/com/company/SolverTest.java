@@ -393,6 +393,42 @@ public class SolverTest {
     solveAndEvaluate(problemBoard, expectedBoard);
   }
 
+  @Test
+  public void canSolvePageonline() {
+    String problem =
+      "     8 | 1     |     5 \n" +
+      "   9   |   3   |   2   \n" +
+      " 5     |     9 | 1     \n" +
+      "-------|-------|-------\n" +
+      " 6     |     4 | 2     \n" +
+      "   3   |   6   |   5   \n" +
+      "     9 | 8     |     6 \n" +
+      "-------|-------|-------\n" +
+      "     5 | 4     |     1 \n" +
+      "   6   |   2   |   3   \n" +
+      " 7     |     6 | 8     \n";
+    Board problemBoard = new Board();
+    problemBoard.fromString(problem);
+
+    String expected =
+      "       |       |       \n" +
+      "       |       |       \n" +
+      "       |       |       \n" +
+      "-------|-------|-------\n" +
+      "       |       |       \n" +
+      "       |       |       \n" +
+      "       |       |       \n" +
+      "-------|-------|-------\n" +
+      "       |       |       \n" +
+      "       |       |       \n" +
+      "       |       |       \n";
+    Board expectedBoard = new Board();
+    expectedBoard.fromString(expected);
+
+    solveAndEvaluate(problemBoard, expectedBoard);
+  }
+
+
 
   private void solveAndEvaluate(Board problemBoard, Board expectedBoard) {
     solver = new Solver();

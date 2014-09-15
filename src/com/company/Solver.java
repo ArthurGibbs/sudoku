@@ -22,7 +22,7 @@ public class Solver {
       progress |= SinglePossibilityForCell();
       progress |= SinglePlaceForNumberInBlocks();
       progress |= SinglePlaceForNumberInRowsCols();
-      progress |= BlockUnusableOptions();
+      progress |= BlockUnusableOptions();       //only does rows so far
       // forward row col blocking(if the only place for a 7 can go in two places in a box but in the same row or coll you know it cant go in other cell in the row)
       // path finding
     }
@@ -46,7 +46,6 @@ public class Solver {
       List<Cell> rowCells = new ArrayList<Cell>();
       List<Integer> options = new ArrayList<Integer>();
       for (int x = 0; x < 3; x++) {
-
         Cell cell = box.getCell(x, y);
         rowCells.add(cell);
         if (cell.getValue() == null) {
